@@ -118,6 +118,13 @@
   }
   #dialog .who{color:#7a2e8f; margin-bottom:5px; font-size:8px;}
   #dialog .next{position:absolute; right:10px; bottom:6px; animation:bob 1s infinite;}
+  #dText{white-space:normal;}
+  #dText p,#quizWhy p{margin:0 0 8px 0;}
+  #dText p:last-child,#quizWhy p:last-child{margin-bottom:0;}
+  #dText ul,#quizWhy ul{margin:6px 0 8px 15px; padding-left:11px;}
+  #dText li,#quizWhy li{margin:4px 0; line-height:1.75;}
+  #dText .lead,#quizWhy .lead{margin-bottom:7px;}
+  #dText .formula,#quizWhy .formula{display:block; margin:6px 0; padding:5px 7px; background:#fff8dd; border-left:3px solid #b8942b;}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 
   #quiz{
@@ -605,7 +612,7 @@
       <div class="panel-stat"><span>Map</span><span id="sideMap">-</span></div>
       <div class="panel-stat"><span>Tokens</span><span id="sideTokens">0 alpha</span></div>
       <div class="panel-stat"><span>MCQ score</span><span id="sideQuestions">0/0</span></div>
-      <div class="panel-stat"><span>Question bank</span><span id="sideBank">-</span></div>
+      <div class="panel-stat"><span>Question bank</span><span id="sideBank">v29 -</span></div>
       <div class="panel-stat"><span>LOs visited</span><span id="sideSeen">0/0</span></div>
       <div class="panel-stat"><span>Badges</span><span id="sideBadges">None yet</span></div>
     </div>
@@ -2396,13 +2403,13 @@ function autoPlaceInterior(mapId, prefC, prefR){
   OBJECTS.push({id:"pl441", map:"liqhouse", c:5, r:5, name:"Plaque: T = F + N", emoji:"🧾", los:["4.4.1a", "4.4.1b"], lines:["**T = F + N** — Trading level = Funding level + Notional funding. Fees and returns are computed on the TRADING level."]});
   OBJECTS.push({id:"pl442", map:"liqhouse", c:9, r:5, name:"The Formula Wall", emoji:"📐", los:["4.4.2d", "4.4.7b", "4.4.7c"], lines:["**VaR = (α×σ) + μ** · **Ω = UPM/LPM** · **R_true = (R − ρR₋₁)/(1−ρ)** · **σ²true = σ²rep(1+ρ)/(1−ρ)** · **βtrue = βrep/(1−ρ)**. Five formulas, five exam points."]});
   NPCS.push({id:"prof45", map:"aggtower", c:7, r:2, name:"Prof. Aggregator — greeter", emoji:"🧑‍🏫", lines:()=>["\"The **Aggregation Tower**, **Chapter 4.5**. Six residents run this machine: the Matrix Keeper, the Correlation Weaver, the Records Clerk, the Calendar Sentinel, the Cyber Warden and the Three Chairs. Two acronym plaques on the floor: **W-W-H-W-W** and **D-W-M-Q-A**.\""]});
-  NPCS.push({id:"st451", map:"aggtower", c:2, r:2, name:"Matrix Keeper (4.5.1)", emoji:"🗂️", los:["4.5.1a", "4.5.1b", "4.5.1c", "4.5.1d"], lines:()=>["Risk measurement starts at the **IPS** and runs top level to position level. Five components, five questions — **W-W-H-W-W**: **Who** gets reports · **What** dimensions · **How** aggregated · **When** collected · **Where** measured.", "Pricing matrix: **Level 1** liquid, daily market data · **Level 2** observable, less frequent · **Level 3** illiquid, model-valued, QUARTERLY. And valuation lives in the back office, never with the PM — **conflicts of interest**."]});
+  NPCS.push({id:"st451", map:"aggtower", c:2, r:2, name:"Matrix Keeper (4.5.1)", emoji:"🗂️", los:["4.5.1a", "4.5.1b", "4.5.1c", "4.5.1d"], lines:()=>["Risk measurement starts at the **IPS** and runs from the total portfolio down to each position.\n\nFive components, five exam questions — **W-W-H-W-W**:\n• **Who** gets reports = **risk reporting**\n• **What data is collected** = **dimensions of risk**\n• **How** data is combined = **aggregation and systems development**\n• **When** data is collected = **frequency**\n• **Where** data is gathered = **investment or position level**", "Exam trap:\n• If the stem says **what data is collected**, answer **Dimensions of risk**.\n• Do not answer frequency: frequency is **when** data is collected.\n• Examples of dimensions: exposure, leverage, liquidity, counterparty, valuation, key-person, legal, regulatory and compliance risks.", "Pricing matrix:\n• **Level 1** = liquid assets with daily market data.\n• **Level 2** = observable data, but less frequent.\n• **Level 3** = illiquid, model-valued, usually quarterly.\n\nValuation belongs in the back office, not with the PM, to avoid **conflicts of interest**."]});
   NPCS.push({id:"st452", map:"aggtower", c:5, r:2, name:"Correlation Weaver (4.5.2)", emoji:"🔗", los:["4.5.2a", "4.5.2b", "4.5.2c"], lines:()=>["Returns aggregate as a weighted average. **Risk does NOT** — correlations make it nonlinear. Tools: Monte Carlo for nonlinear exposures, **stress tests**, multifactor models — and QUALITATIVE risk systems for alternatives.", "The 12-dimension risk report — and mind **key person risk**: no single-person reliance, insurance, extraordinary redemption rights, diversification. **Exception reports** fire only when limits break."]});
   NPCS.push({id:"st453", map:"aggtower", c:9, r:2, name:"Records Clerk (4.5.3)", emoji:"📇", los:["4.5.3a", "4.5.3b", "4.5.3c"], lines:()=>["The due-diligence tracking matrix has five drawers: descriptive info · key info · other info · the **watch list** — managers under concern, tracked until resolved — and the activity log. The chief compliance officer may certify it."]});
   NPCS.push({id:"st454", map:"aggtower", c:12, r:2, name:"Calendar Sentinel (4.5.4–4.5.5)", emoji:"📅", los:["4.5.4a", "4.5.4b", "4.5.4c", "4.5.5a", "4.5.5b"], lines:()=>["Cadence **D-W-M-Q-A**. **Daily**: prices, positions, keyword searches. **Weekly**: gross long/short, net exposure, **margin-to-equity**. **Monthly**: turnover, all-level exposures, watch-list triggers.", "**Quarterly**: **Level 3** valuations plus manager calls with the COO/CFO. **Annually**: TWO on-site visits — operations first, investment due diligence second — reapprovals, and background checks every 3 years."]});
   NPCS.push({id:"st456", map:"aggtower", c:2, r:5, name:"Cyber Warden (4.5.6)", emoji:"🛡️", los:["4.5.6a", "4.5.6b", "4.5.6c", "4.5.6d", "4.5.6e"], lines:()=>["Four confidential areas at risk: personal/organizational data · investments · sales · business management. The **SEC** Risk Alert examines six areas: governance & risk assessment · access rights · data loss prevention · vendor management · training · incident response.", "**EU**: the **NIS** Directive (May 2018) — identify critical systems, penetration tests, training, incident response plans. Asia regulates country by country: Hong Kong, Japan's three acts, Singapore's Cybersecurity Act."]});
   NPCS.push({id:"st457", map:"aggtower", c:12, r:5, name:"The Three Chairs (4.5.7)", emoji:"👔", los:["4.5.7a", "4.5.7b", "4.5.7c"], lines:()=>["Three risk-manager models: the CEO chair, the COO/CFO chair, and the **CIO** chair — the PREFERRED one, strictly separated from investment decisions so risk never loses priority.", "The investment process IS a risk process: idea → due diligence → committee → board — every gate a risk filter. Analysts watch dashboards daily; exceptions escalate."]});
-  OBJECTS.push({id:"pl451", map:"aggtower", c:5, r:5, name:"Plaque: W-W-H-W-W", emoji:"🪧", los:["4.5.1b"], lines:["**W-W-H-W-W** — **Who** reports · **What** dimensions · **How** aggregated · **When** collected · **Where** measured. The five components of risk measurement."]});
+  OBJECTS.push({id:"pl451", map:"aggtower", c:5, r:5, name:"Plaque: W-W-H-W-W", emoji:"🪧", los:["4.5.1b"], lines:["**W-W-H-W-W**:\n• **Who** reports = risk reporting\n• **What data is collected** = **dimensions of risk**\n• **How** aggregated = systems development\n• **When** collected = frequency\n• **Where** measured = investment / position level", "Memory hook:\n• **WHAT = DIMENSIONS**.\n• If the exam asks 'what data is collected?', select **Dimensions of risk**."]});
   OBJECTS.push({id:"pl454", map:"aggtower", c:9, r:5, name:"Plaque: D-W-M-Q-A", emoji:"🗓️", los:["4.5.1d"], lines:["**D-W-M-Q-A** — Daily · Weekly · Monthly · Quarterly · Annually. The reporting-cadence ladder: the less liquid the asset, the slower the rung."]});
   /* acronym plaques, auto-placed inside legacy houses */
   const PLQ=[["temple", "⚖️", "Plaque: LPDI", "**LPDI** — the four fiduciary obligations: **Loyalty** · **Prudence** · **Diversification** · **Impartiality**. Every CR answer in this village ends by linking back here."], ["hall", "📜", "Plaque: EPC-HHPLC & IDMRP", "**EPC-HHPLC** — the 8 Principles: P1–4 do the RIGHT THINGS (Ethical behavior, Partnership, Client-first, High standards of Conduct) · P5–8 do THINGS RIGHT (High standards of Practice, Professional work, continued Learning, Collaboration). Conflicts run **IDMRP**: Identify · Disclose · Manage · Recuse · Prioritize the client."], ["museum", "🏛", "Plaque: MABNC", "**MABNC** — **MF Global** · **Archegos** · **Bear Stearns** · **NY Common** · **CalPERS**. One theme: inadequate **checks and balances**."], ["campus", "🎓", "Plaque: Endowment Model", "The **endowment model**: heavy equities and alternatives, the case AGAINST bonds, harvest the illiquidity premium — powered by **intergenerational equity** and disciplined **spending rates**."], ["fondation", "⛪", "Plaque: The 5% Rule", "**5%** — the minimum annual distribution of a private foundation. Rigid spending + illiquid assets = **liquidity risk**."], ["manoir", "🏰", "Plaque: ABO / PBO", "**ABO** = accumulated benefit obligation (today's salaries) · **PBO** = projected (future salaries). **Funded status** = assets vs liabilities; the gap is **surplus risk**. Hedge it with **LDI**."], ["palais", "👑", "Plaque: 4 SWF Types", "Four **SWF** types — **Stabilization** · **Savings** · **Reserve** · **Development**. Watch **Dutch disease**; govern by the **Santiago Principles**."], ["mvohub", "📊", "Plaque: Utility", "**U = E(r) − ½·A·σ²** — utility trades expected return against variance, scaled by **risk aversion** A. The whole tower stands on this line."], ["riskgym", "🏋️", "Plaque: Risk Parity", "**Risk parity** — equalize each asset's RISK contribution, then lever the low-volatility side. You budget **risk**, not dollars."], ["peharbor", "⚓", "Plaque: J-Curve", "The **J-curve** — private funds dip first (fees, immature deals), then climb. **Overcommitment** keeps capital working; **co-investments** and **secondaries** bend the curve."], ["tpahq", "🌐", "Plaque: TPA Pillars", "**TPA** — one portfolio, four habits: a **factor lens** · a **reference portfolio** · **competition for capital** · a total-portfolio culture."], ["rebaldojo", "🧘", "Plaque: Concave vs Convex", "**Constant mix** = CONCAVE, sells strength, wins in ranges. **CPPI** = CONVEX, buys strength, wins in trends. **Buy-and-hold** sits between. **OBPI** builds the floor with options."], ["alpha", "🏛", "Plaque: Hierarchy of Alpha", "The **hierarchy of alpha**: **true alpha** → **manufactured alpha** → **transitional alpha** → inaccessible **risk premium** → **alternative beta** → pure **beta**. Know which one you are paying for."], ["dojo", "🥋", "Plaque: Put-Call Parity", "**c + PV(K) = p + S** — put-call parity, the dojo's first kata. From it: **delta**, hedging, and options as volatility bets."], ["cave", "🕳", "Plaque: I.R.P.", "**I.R.P.** — the Inaccessible **Risk Premium**: returns real but closed to you (regulation, capacity, access). Looks like alpha on paper; is not."], ["pyramid", "🔺", "Plaque: Dispersion × Persistence", "Where does **alpha** hide? Where manager **dispersion** is WIDE and performance **persistence** is REAL — the higher you climb this pyramid, the more selection matters."]];
@@ -2594,6 +2601,9 @@ v1:[
  {lo:'4.5.1', d:'M', q:"In the five components of risk measurement, the question 'WHEN?' corresponds to:", a:"Frequency of data collection",
   w:["Risk reporting","Dimensions of risk","Aggregation and systems development"],
   why:"Who = reporting; What = dimensions of risk; How = aggregation/systems; When = frequency; Where = investment/position level."},
+ {lo:'4.5.1', d:'M', q:"Which component of risk measurement specifies WHAT data is collected?", a:"Dimensions of risk",
+  w:["Aggregation and systems development","Investment or position level","Risk reporting"],
+  why:"Exam trap: WHAT data is collected = dimensions of risk. WHO gets reports = risk reporting; HOW = aggregation/systems; WHERE = investment or position level."},
  {lo:'4.5.1', d:'M', q:"LEVEL 3 assets in a pricing matrix are:", a:"Illiquid, valued by models with low confidence, typically valued quarterly",
   w:["The most liquid, priced daily","Based on observable data at high frequency","Government bonds only"],
   why:"Level 1 = liquid/high-frequency market data; Level 2 = observable but less frequent; Level 3 = model-based (capital statements, DCF, proxy indices) quarterly. Valuation is separated from the investment manager to avoid conflicts."},
@@ -2632,7 +2642,7 @@ v1:[
  {"lt": "pick", "lo": "4.4.5", "d": "H", "q": "LIST — Select the FOUR causes of first-order autocorrelation in price indices:", "items": ["Stale component prices", "Appraiser anchoring", "Biased transaction prices", "Lag between price-setting and reporting"], "why": "Stale prices, anchoring, biased transactions, reporting lag — the four smoothing engines.", "wrong": ["High trading volume", "Dividend seasonality", "Index rebalancing"]},
  {"lt": "pick", "lo": "4.5.6", "d": "H", "q": "LIST — Select the SIX SEC Risk Alert cybersecurity examination areas:", "items": ["Governance and risk assessment", "Access rights and controls", "Data loss prevention", "Vendor management", "Training", "Incident response"], "why": "Six areas — governance, access, data loss, vendors, training, incident response.", "wrong": ["Marketing material design", "Fee disclosure"]},
  {"lt": "order", "lo": "4.5.7", "d": "E", "q": "ORDER — The investment process gates, in sequence:", "items": ["Idea generation", "Due diligence", "Investment committee", "Board"], "why": "The investment process IS a risk process — each gate applies risk identification and measurement."},
- {"lt": "order", "lo": "4.5.1", "d": "M", "q": "ORDER — W-W-H-W-W: tap the five components of risk measurement in order:", "items": ["Who gets the reports", "What dimensions of risk", "How risk is aggregated", "When data is collected", "Where risk is measured"], "why": "Who = reporting · What = dimensions · How = aggregation/systems · When = frequency · Where = position level."},
+ {"lt": "order", "lo": "4.5.1", "d": "M", "q": "ORDER — W-W-H-W-W: tap the five components of risk measurement in order:", "items": ["Who gets the reports", "What data / dimensions of risk", "How risk is aggregated", "When data is collected", "Where risk is measured"], "why": "Who = reporting · What data is collected = dimensions of risk · How = aggregation/systems · When = frequency · Where = position level."},
  {"lt": "pick", "lo": "4.5.2", "d": "M", "q": "LIST — Select the FOUR key-person-risk mitigations:", "items": ["No single-person reliance", "Key person insurance", "Extraordinary redemption rights", "A diversified portfolio of replaceable investments"], "why": "Mitigate the person, insure the person, escape the fund, diversify the book.", "wrong": ["A bigger bonus pool", "Concealing departures from LPs"]}
 ],
 v2:[
@@ -3005,6 +3015,2502 @@ v3:[
  {"lo": "1.2.4", "d": "M", "q": "MF Global's TWO core failures were:", "a": "Commingling client assets and the CEO overriding the CRO", "w": ["Bad bond picks and low fees", "Excess diversification and slow trading", "Overstaffed compliance and high margins"], "why": "Client-First (P3) and High Standards of Conduct (P4) both collapsed — a checks-and-balances failure, not a market call."}
 ]
 };
+/* ================= v29: RemNote concept coverage supplement =================
+   Purpose: make every main concept from the uploaded card files explicitly answerable in the quiz bank.
+   These are not verbatim copies of cards; they are exam-answerable concept checks.
+*/
+const SUPP_BANKS_V29 = {
+  "v3": [
+    {
+      "lo": "1.1.1",
+      "d": "M",
+      "q": "The main participants in the investment industry are best described as:",
+      "a": "Asset owners, asset managers, consultants, brokers, investment banks, service providers, and regulators",
+      "w": [
+        "Only asset owners and asset managers",
+        "Only public companies and banks",
+        "Only clients and regulators"
+      ],
+      "why": "Know the ecosystem: asset owners are principals/fiduciaries; asset managers act as agents when capital is outsourced."
+    },
+    {
+      "lo": "1.1.1",
+      "d": "M",
+      "q": "Asset owners act mainly as:",
+      "a": "Fiduciaries or principals for beneficiaries and investors",
+      "w": [
+        "Broker-dealers executing trades",
+        "Investment banks underwriting securities",
+        "Regulators setting capital rules"
+      ],
+      "why": "Asset owners control pools of capital and owe duties to beneficiaries or investors."
+    },
+    {
+      "lt": "pick",
+      "lo": "1.1.1",
+      "d": "M",
+      "q": "LIST - Select the four facets of purpose of the investment industry:",
+      "items": [
+        "Intrinsic purpose",
+        "Core purpose",
+        "Fundamental purpose",
+        "Collateral purpose"
+      ],
+      "wrong": [
+        "Marketing purpose",
+        "Speculative purpose",
+        "Tax purpose"
+      ],
+      "why": "Intrinsic = match savers/users of capital; core = portfolio management; fundamental = societal wealth and well-being; collateral = jobs and rewards for the industry."
+    },
+    {
+      "lo": "1.1.2",
+      "d": "M",
+      "q": "Private markets may be viewed as more directly value-creating than public markets because:",
+      "a": "They often finance growth, restructuring, new projects, or operational improvement",
+      "w": [
+        "They always avoid secondary trading",
+        "They have no agency conflicts",
+        "They eliminate all investment risk"
+      ],
+      "why": "Public markets often trade existing securities; private markets more often inject capital into projects or companies."
+    },
+    {
+      "lo": "1.1.2",
+      "d": "M",
+      "q": "Stewardship creates investment-industry value through:",
+      "a": "Engagement, voting, dialogue, and oversight that support long-term corporate performance",
+      "w": [
+        "Only buying IPOs",
+        "Only minimizing tracking error",
+        "Avoiding all contact with company management"
+      ],
+      "why": "Stewardship uses ownership influence to improve long-term value and manage risks."
+    },
+    {
+      "lo": "1.1.2",
+      "d": "M",
+      "q": "Sustainable finance means:",
+      "a": "Meeting current asset-owner and stakeholder needs without compromising future stakeholders",
+      "w": [
+        "Maximizing short-term profits only",
+        "Investing only in green bonds",
+        "Avoiding every risky asset"
+      ],
+      "why": "It connects financial returns with stakeholder welfare and the industry social license."
+    },
+    {
+      "lo": "1.1.3",
+      "d": "M",
+      "q": "Culture supports professionalism because it:",
+      "a": "Integrates values, focuses attention, and improves communication and engagement",
+      "w": [
+        "Replaces fiduciary duty",
+        "Guarantees performance",
+        "Eliminates the need for regulation"
+      ],
+      "why": "IFC: Integration, Focus, Capitalize/communication. Culture makes ethics practical inside a group."
+    },
+    {
+      "lo": "1.1.4",
+      "d": "M",
+      "q": "The three elements required to gain client trust are:",
+      "a": "Credibility, communication, and professionalism",
+      "w": [
+        "Return, leverage, and liquidity",
+        "Alpha, beta, and fees",
+        "Scale, speed, and secrecy"
+      ],
+      "why": "Client trust comes from qualification/track record, timely clear communication, and competent fiduciary conduct."
+    },
+    {
+      "lo": "1.1.4",
+      "d": "M",
+      "q": "When the right choice is not obvious, the professional should especially analyze:",
+      "a": "Conflicts of interest, benefit-cost tradeoffs, and whether the client is sufficiently known",
+      "w": [
+        "Only the highest return asset",
+        "Only the legal minimum",
+        "Only the lowest fee option"
+      ],
+      "why": "Suitability and ethics require methodical judgment, not just return maximization."
+    },
+    {
+      "lo": "1.2.1",
+      "d": "M",
+      "q": "Ethics matters when rules are incomplete because ethics:",
+      "a": "Guides judgment when rules do not fully resolve conflicts or tradeoffs",
+      "w": [
+        "Cancels the need to obey law",
+        "Applies only after a loss",
+        "Is identical to regulation"
+      ],
+      "why": "Rules set floors; ethics and principles guide behavior when rules lag, conflict, or are silent."
+    },
+    {
+      "lo": "1.2.1",
+      "d": "M",
+      "q": "Doing the right things vs doing things right:",
+      "a": "P1-P4 are ethical intent; P5-P8 are competent execution",
+      "w": [
+        "P1-P4 are formulas; P5-P8 are case names",
+        "P1-P4 are only for regulators; P5-P8 only for clients",
+        "There is no distinction"
+      ],
+      "why": "Good values without competence can harm clients; competence without ethics can lead to misconduct."
+    },
+    {
+      "lt": "pick",
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "LIST - Select the four P1-P4 right-things principles:",
+      "items": [
+        "Ethical and Professional Behavior",
+        "Partnership",
+        "Client-First Mindset",
+        "High Standards of Conduct"
+      ],
+      "wrong": [
+        "High Standards of Practice",
+        "Professional Work",
+        "Continued Learning"
+      ],
+      "why": "P1-P4 cover values, ethics, client-first behavior, transparency and accountability."
+    },
+    {
+      "lt": "pick",
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "LIST - Select the four P5-P8 things-right principles:",
+      "items": [
+        "High Standards of Practice",
+        "Professional Work",
+        "Continued Learning",
+        "Collaboration"
+      ],
+      "wrong": [
+        "Client-First Mindset",
+        "Partnership",
+        "High Standards of Conduct"
+      ],
+      "why": "P5-P8 cover competence, execution, documentation, learning, and peer/industry collaboration."
+    },
+    {
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "P2 Partnership differs from P8 Collaboration because:",
+      "a": "P2 is collaboration with clients; P8 is collaboration with peers and the industry",
+      "w": [
+        "P2 is legal and P8 is illegal",
+        "P2 is about trading and P8 about taxes",
+        "They are identical"
+      ],
+      "why": "P2 builds trust and expectations with clients. P8 improves work quality and the ecosystem through peer review, mentoring, and volunteering."
+    },
+    {
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "P4 vs P5 vs P6 - the clean distinction is:",
+      "a": "P4 transparency/conduct; P5 standards/competence; P6 professional output and documentation",
+      "w": [
+        "P4 performance; P5 leverage; P6 liquidity",
+        "P4 taxes; P5 alpha; P6 beta",
+        "They are all the same principle"
+      ],
+      "why": "This distinction is a common ethics trap: conduct, practice standard, and professional work are not interchangeable."
+    },
+    {
+      "lt": "order",
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "ORDER - P3 conflict management steps:",
+      "items": [
+        "Avoid conflicts when possible",
+        "Disclose adequately if unavoidable",
+        "Govern through a formal management process"
+      ],
+      "why": "Avoidance is first-best. Disclosure and governance are fallback controls, not permission to harm the client."
+    },
+    {
+      "lt": "pick",
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "LIST - P4 error disclosure must include:",
+      "items": [
+        "Prompt disclosure",
+        "Circumstances surrounding the error",
+        "Mitigation efforts taken or planned"
+      ],
+      "wrong": [
+        "Guaranteed reimbursement in all cases",
+        "Delay until audited",
+        "Disclosure only if the client asks"
+      ],
+      "why": "P4 requires transparency, integrity and accountability when errors occur."
+    },
+    {
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "Under P6 Professional Work, documentation must allow:",
+      "a": "A technically competent person to understand the analysis and risk review from the file alone",
+      "w": [
+        "Only the portfolio manager to understand it",
+        "No one to audit it",
+        "Only the client to see final returns"
+      ],
+      "why": "P6 is about professional output: due diligence, transparent analysis, risk management and documentation."
+    },
+    {
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "The P6 legality trap is:",
+      "a": "Legal compliance is required but may still be ethically insufficient",
+      "w": [
+        "If legal, it is always ethical",
+        "If profitable, it is ethical",
+        "Ethics replaces local law"
+      ],
+      "why": "CAIA principles can require judgment above minimum legal compliance."
+    },
+    {
+      "lo": "1.2.3",
+      "d": "M",
+      "q": "P8 Collaboration requires professionals to:",
+      "a": "Use peer review, mentor others, volunteer, and support well-crafted regulation",
+      "w": [
+        "Avoid sharing all knowledge",
+        "Compete secretly with peers only",
+        "Focus only on personal performance"
+      ],
+      "why": "P8 links client value to a better investment ecosystem and professional community."
+    },
+    {
+      "lt": "pick",
+      "lo": "1.2.2",
+      "d": "M",
+      "q": "LIST - Assurance of quality is built from:",
+      "items": [
+        "Fiduciary duty",
+        "License to operate",
+        "Trust",
+        "Conflict management"
+      ],
+      "wrong": [
+        "Leverage",
+        "Guaranteed alpha",
+        "Asset growth"
+      ],
+      "why": "FLTC: assurance is how stakeholders can trust the value proposition."
+    },
+    {
+      "lo": "1.2.2",
+      "d": "M",
+      "q": "License to operate means:",
+      "a": "The legitimacy and social acceptance needed to pursue investment activity",
+      "w": [
+        "A trading license only",
+        "A tax exemption only",
+        "A guarantee from the regulator"
+      ],
+      "why": "It is broader than legal permission: society grants legitimacy when the industry creates value responsibly."
+    },
+    {
+      "lo": "1.2.2",
+      "d": "M",
+      "q": "Trust in investment management is especially fragile because it:",
+      "a": "Builds slowly but can be destroyed quickly",
+      "w": [
+        "Is created instantly by performance",
+        "Does not depend on conduct",
+        "Is unrelated to risk"
+      ],
+      "why": "Long horizons, uncertainty, and important life goals make trust central."
+    },
+    {
+      "lo": "1.2.4",
+      "d": "M",
+      "q": "The common root cause across MF Global, Archegos, Bear Stearns, NY Common, and CalPERS was:",
+      "a": "Inadequate checks and balances",
+      "w": [
+        "Too much diversification",
+        "Index tracking error",
+        "Low market volatility"
+      ],
+      "why": "The cases differ, but each concentrated power or hid risk without sufficient oversight."
+    },
+    {
+      "lo": "1.2.4",
+      "d": "M",
+      "q": "A firm uses customer cash to meet its own margin call. The closest case and principle issue:",
+      "a": "MF Global - commingling client and firm assets; fiduciary and client-first breach",
+      "w": [
+        "Archegos - index tracking error",
+        "CalPERS - excess diversification",
+        "Bear Stearns - legal tax planning"
+      ],
+      "why": "MF Global is the commingling and margin-call case."
+    },
+    {
+      "lo": "1.2.4",
+      "d": "M",
+      "q": "A manager hides aggregate swap exposure across prime brokers. Closest case:",
+      "a": "Archegos",
+      "w": [
+        "MF Global",
+        "NY Common",
+        "CalPERS"
+      ],
+      "why": "Archegos used total return swaps and family-office opacity so counterparties lacked a full risk picture."
+    },
+    {
+      "lo": "1.2.4",
+      "d": "M",
+      "q": "A pension official steers assets after gifts or political contributions. Closest cases:",
+      "a": "NY Common or CalPERS - pay-to-play and bribery conflicts",
+      "w": [
+        "MF Global or Archegos",
+        "Bear Stearns or CPPI",
+        "Black-Litterman or LN-PME"
+      ],
+      "why": "Public pension scandals test conflicts, governance, fiduciary duty, and objective decision making."
+    }
+  ],
+  "v2": [
+    {
+      "lo": "2.1.1",
+      "d": "E",
+      "q": "Institutional asset owners include:",
+      "a": "Endowments, foundations, pension funds, sovereign wealth funds, and family offices",
+      "w": [
+        "Only hedge funds and banks",
+        "Only regulators and brokers",
+        "Only ETFs and mutual funds"
+      ],
+      "why": "These are the core asset-owner types in the IPS reading."
+    },
+    {
+      "lo": "2.1.1",
+      "d": "M",
+      "q": "Endowment vs foundation:",
+      "a": "Both support nonprofit objectives, but foundations usually face mandatory annual spending",
+      "w": [
+        "Endowments must spend exactly like foundations",
+        "Foundations never make grants",
+        "They are identical"
+      ],
+      "why": "The exam trap is spending flexibility: foundation spending is usually legally constrained."
+    },
+    {
+      "lo": "2.1.1",
+      "d": "M",
+      "q": "National pension fund vs SWF:",
+      "a": "National pension funds support retirement income; SWFs support intergenerational or sovereign objectives",
+      "w": [
+        "SWFs are always DC plans",
+        "National pensions are family offices",
+        "Both are only tax shelters"
+      ],
+      "why": "Pension = retirement income. SWF = stabilization, savings, reserve, or development purpose."
+    },
+    {
+      "lo": "2.1.2",
+      "d": "M",
+      "q": "SAA expected return is built from:",
+      "a": "Short-term real riskless rate + expected inflation + risk premium",
+      "w": [
+        "Beta + alpha + fees",
+        "Cap rate + leverage + carry",
+        "Spending rate + tax rate + duration"
+      ],
+      "why": "This macro expected return decomposition anchors strategic asset allocation."
+    },
+    {
+      "lo": "2.1.2",
+      "d": "M",
+      "q": "The danger of using historical alternative returns mechanically is:",
+      "a": "Past alpha may shrink as more investors compete it away",
+      "w": [
+        "Historical data never matters",
+        "Alternatives have no risk",
+        "Correlations are always fixed"
+      ],
+      "why": "Alternative return estimates have short histories and unstable alpha."
+    },
+    {
+      "lo": "2.1.2",
+      "d": "M",
+      "q": "Allocation floors and caps exist because:",
+      "a": "Floors make an allocation meaningful; caps limit concentration, liquidity strain, and sourcing problems",
+      "w": [
+        "Floors eliminate taxes; caps guarantee alpha",
+        "They apply only to public equities",
+        "They replace risk tolerance"
+      ],
+      "why": "Absolute and relative allocation size must balance impact, staffing, sourcing capacity, and concentration risk."
+    },
+    {
+      "lo": "2.1.3",
+      "d": "M",
+      "q": "Return objectives must always be stated with:",
+      "a": "The risk taken and the owner risk tolerance",
+      "w": [
+        "Only a benchmark name",
+        "Only a fee budget",
+        "Only the highest possible return"
+      ],
+      "why": "A return target is invalid if it conflicts with risk tolerance or constraints."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.1.3",
+      "d": "M",
+      "q": "LIST - Internal IPS constraints include:",
+      "items": [
+        "Liquidity needs",
+        "Time horizon",
+        "Sector or country limits"
+      ],
+      "wrong": [
+        "Tax status",
+        "Regulation",
+        "Central-bank policy"
+      ],
+      "why": "Internal constraints are client-set and controllable. External constraints include taxes, regulation, transaction costs and market frictions."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.1.3",
+      "d": "M",
+      "q": "LIST - External IPS constraints include:",
+      "items": [
+        "Tax status",
+        "Regulation",
+        "Transaction costs or market frictions"
+      ],
+      "wrong": [
+        "Time horizon",
+        "Self-imposed country limit",
+        "Spending preference"
+      ],
+      "why": "External constraints come from outside the client."
+    },
+    {
+      "lo": "2.1.4",
+      "d": "M",
+      "q": "The IPS investment philosophy should establish:",
+      "a": "The prudent-investor standard and the role of diversification",
+      "w": [
+        "Only the exact return target",
+        "Only the custodian fee",
+        "Only the trading desk procedure"
+      ],
+      "why": "The IPS is a fiduciary guide across a full market cycle, not just a performance target."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.1.4",
+      "d": "M",
+      "q": "LIST - IPS roles and responsibilities typically identify:",
+      "items": [
+        "Board or trustees",
+        "Investment committee",
+        "Internal staff",
+        "Adviser or OCIO",
+        "Trustee or custodian"
+      ],
+      "wrong": [
+        "Market makers",
+        "Rating agencies",
+        "Media providers"
+      ],
+      "why": "The IPS clarifies who approves, recommends, operates, advises, and safeguards assets."
+    },
+    {
+      "lo": "2.1.4",
+      "d": "M",
+      "q": "Adviser vs OCIO:",
+      "a": "An adviser recommends; an OCIO receives materially more delegated discretion",
+      "w": [
+        "An adviser is always a custodian",
+        "An OCIO cannot select managers",
+        "They are identical"
+      ],
+      "why": "Both have duties and deliverables, but the OCIO can often make allocation and manager decisions."
+    },
+    {
+      "lo": "2.1.5",
+      "d": "M",
+      "q": "DB pension investment objective is usually anchored to:",
+      "a": "Meeting or exceeding the liability discount-rate requirement",
+      "w": [
+        "Providing a broad menu only",
+        "Maximizing foundation spending",
+        "Avoiding all fixed income"
+      ],
+      "why": "DB plans have defined liabilities, so the objective links assets to liabilities."
+    },
+    {
+      "lo": "2.1.5",
+      "d": "M",
+      "q": "DC plan investment objective is usually:",
+      "a": "Provide a broad investment menu for reasonable participant diversification",
+      "w": [
+        "Target a return above the liability discount rate",
+        "Guarantee retirement income",
+        "Immunize sponsor liabilities"
+      ],
+      "why": "DC has no defined benefit liability to fund; participants choose allocations and bear investment risk."
+    },
+    {
+      "lo": "2.1.5",
+      "d": "M",
+      "q": "Risk tolerance in an IPS should align with:",
+      "a": "Return requirement, time horizon, and liquidity needs",
+      "w": [
+        "Only past performance",
+        "Only manager fees",
+        "Only peer ranking"
+      ],
+      "why": "RTL: risk, time, liquidity must be coherent."
+    },
+    {
+      "lo": "2.1.5",
+      "d": "M",
+      "q": "A shorter IPS time horizon generally implies:",
+      "a": "Lower tolerance for risk and illiquidity",
+      "w": [
+        "Higher illiquid allocation automatically",
+        "No need for diversification",
+        "Higher leverage capacity"
+      ],
+      "why": "Less time to recover losses means lower risk capacity."
+    },
+    {
+      "lo": "2.1.5",
+      "d": "M",
+      "q": "A spending policy mainly balances:",
+      "a": "Current beneficiaries cash flows against future beneficiaries",
+      "w": [
+        "The broker fee against the custodian fee",
+        "The alpha against beta only",
+        "Taxable versus tax-exempt bonds only"
+      ],
+      "why": "Spending policy drives investment objective and asset allocation."
+    },
+    {
+      "lo": "2.1.6",
+      "d": "M",
+      "q": "Asset-allocation guidelines in an IPS should focus on:",
+      "a": "Portfolio roles such as diversifier or return enhancer, not just asset-class labels",
+      "w": [
+        "Ticker symbols only",
+        "Short-term winners",
+        "Manager marketing categories"
+      ],
+      "why": "Roles reduce false diversification and improve portfolio construction."
+    },
+    {
+      "lo": "2.1.6",
+      "d": "M",
+      "q": "Manager retention should be evaluated mainly using:",
+      "a": "Long-term qualitative and quantitative evidence, relative performance, and style congruence",
+      "w": [
+        "One-month absolute return only",
+        "Marketing quality",
+        "Lowest fee only"
+      ],
+      "why": "Absolute return alone is not enough; style drift and weak relative results matter."
+    },
+    {
+      "lo": "2.1.6",
+      "d": "M",
+      "q": "As a DB plan funded status improves, allocation policy should normally:",
+      "a": "Reduce funded-status volatility and interest-rate risk",
+      "w": [
+        "Increase risk to maximize surplus",
+        "Ignore liabilities",
+        "Move entirely to venture capital"
+      ],
+      "why": "De-risking aligns assets with liabilities as the funding gap closes."
+    },
+    {
+      "lo": "2.1.6",
+      "d": "M",
+      "q": "Broker selection should prioritize:",
+      "a": "Best execution, not simply lowest commission",
+      "w": [
+        "The largest gift",
+        "The lowest explicit cost in all cases",
+        "The broker chosen by the manager personally"
+      ],
+      "why": "Best execution includes total trade quality, not only sticker price."
+    },
+    {
+      "lo": "2.2",
+      "d": "M",
+      "q": "The corpus of an endowment is:",
+      "a": "The nominal value of the initial gift",
+      "w": [
+        "The annual payout only",
+        "The inflation rate",
+        "The board fee budget"
+      ],
+      "why": "The corpus is the base gift amount that long-term spending policy must respect."
+    },
+    {
+      "lo": "2.2",
+      "d": "M",
+      "q": "Intergenerational equity in an endowment means:",
+      "a": "Balancing current spending with preserving real value for future beneficiaries",
+      "w": [
+        "Always maximizing current payout",
+        "Liquidating the endowment now",
+        "Ignoring inflation"
+      ],
+      "why": "A high spending rate favors current beneficiaries at the expense of future ones."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.2",
+      "d": "M",
+      "q": "LIST - Four common spending-rate methods:",
+      "items": [
+        "Fixed percentage",
+        "Inflation-adjusted prior payout",
+        "Trailing market value",
+        "Hybrid method"
+      ],
+      "wrong": [
+        "High-water mark only",
+        "Capital call method",
+        "Put-call parity"
+      ],
+      "why": "FITH: fixed, inflation-adjusted, trailing, hybrid."
+    },
+    {
+      "lo": "2.2",
+      "d": "M",
+      "q": "The endowment model generally favors:",
+      "a": "Equity-like and alternative assets, with domestic government bonds kept for liquidity and tail-risk hedge",
+      "w": [
+        "All corporate bonds only",
+        "Only cash",
+        "No alternatives"
+      ],
+      "why": "The model seeks high long-term returns and illiquidity premium, while keeping safe bonds for crisis liquidity."
+    },
+    {
+      "lo": "2.2",
+      "d": "M",
+      "q": "The main case against corporate bonds in the endowment model:",
+      "a": "Low incremental return and poor crisis liquidity/value compared with government bonds",
+      "w": [
+        "They always default",
+        "They have no duration",
+        "They are not traded"
+      ],
+      "why": "Corporate bonds can behave badly in crises when tail-risk protection is needed."
+    },
+    {
+      "lo": "2.2",
+      "d": "M",
+      "q": "Tail risk in an endowment can be reduced by:",
+      "a": "Raising cash/risk-free debt or hedging beta with options such as collars or put spreads",
+      "w": [
+        "Borrowing more against assets",
+        "Increasing illiquid commitments only",
+        "Ignoring volatility"
+      ],
+      "why": "Tail-risk reduction lowers left-tail exposure; a collateralized loan is liquidity management, not tail-risk hedging."
+    },
+    {
+      "lo": "2.2",
+      "d": "M",
+      "q": "TAA differs from SAA because TAA:",
+      "a": "Deliberately drifts from targets over a short-term, contrarian view",
+      "w": [
+        "Never deviates from targets",
+        "Is always passive and unlevered",
+        "Is identical to IPS policy allocation"
+      ],
+      "why": "TAA overweights undervalued assets and underweights overvalued assets around the SAA."
+    },
+    {
+      "lo": "2.3",
+      "d": "M",
+      "q": "DB vs DC risk bearing:",
+      "a": "DB sponsor bears investment and longevity risk; DC participant bears them",
+      "w": [
+        "DB participant bears all risk; DC sponsor bears all risk",
+        "Both are identical",
+        "Only the custodian bears risk"
+      ],
+      "why": "This is the defining structural difference."
+    },
+    {
+      "lo": "2.3",
+      "d": "M",
+      "q": "Funded status of a DB plan is:",
+      "a": "Fair market value of plan assets minus PBO",
+      "w": [
+        "ABO minus expenses",
+        "Return minus risk",
+        "Assets plus liabilities"
+      ],
+      "why": "Positive = surplus; negative = deficit. Lower asset return or lower discount rate can reduce funded status."
+    },
+    {
+      "lo": "2.3",
+      "d": "M",
+      "q": "ABO vs PBO:",
+      "a": "ABO uses benefits already accrued; PBO adds projected future accruals and salary assumptions",
+      "w": [
+        "ABO is always larger than PBO",
+        "PBO ignores future salary",
+        "They are identical"
+      ],
+      "why": "PBO is the more complete liability measure used in funded-status analysis."
+    },
+    {
+      "lo": "2.3",
+      "d": "M",
+      "q": "LDI aims to:",
+      "a": "Build assets highly correlated with liabilities to reduce surplus volatility",
+      "w": [
+        "Maximize equity beta only",
+        "Avoid all bonds",
+        "Increase contribution volatility"
+      ],
+      "why": "Liability-driven investing manages funded status, not just asset-return volatility."
+    },
+    {
+      "lo": "2.3",
+      "d": "M",
+      "q": "Under asset-liability risk management, cash is not automatically low risk because:",
+      "a": "Risk is surplus volatility and depends on asset-liability correlation",
+      "w": [
+        "Cash always has negative value",
+        "Liabilities have no duration",
+        "Cash is illegal for pensions"
+      ],
+      "why": "A low-volatility asset can be risky if it fails to move with liabilities."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.3",
+      "d": "M",
+      "q": "LIST - Main retiree risks:",
+      "items": [
+        "Longevity risk",
+        "Market risk",
+        "Inflation risk"
+      ],
+      "wrong": [
+        "Style risk",
+        "Basis risk only",
+        "Roll risk only"
+      ],
+      "why": "Retirees may outlive assets, suffer poor returns, or lose purchasing power."
+    },
+    {
+      "lo": "2.4",
+      "d": "M",
+      "q": "Dutch disease occurs when:",
+      "a": "Commodity inflows raise wages and currency value, weakening other export sectors",
+      "w": [
+        "A pension plan is overfunded",
+        "A manager beats the benchmark",
+        "A foundation spends too little"
+      ],
+      "why": "Sterilization can use central-bank bond sales or divert inflows into a foreign-investing SWF."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.4",
+      "d": "M",
+      "q": "LIST - Four SWF types:",
+      "items": [
+        "Stabilization",
+        "Savings",
+        "Reserve or pension-reserve",
+        "Development"
+      ],
+      "wrong": [
+        "Foundation",
+        "Endowment",
+        "Defined contribution"
+      ],
+      "why": "Stabilization smooths volatile revenue; savings preserves wealth; reserve meets liabilities; development supports domestic growth."
+    },
+    {
+      "lo": "2.4",
+      "d": "M",
+      "q": "A stabilization SWF should usually hold mostly:",
+      "a": "Cash and sovereign fixed income for liquidity and budget smoothing",
+      "w": [
+        "Highly illiquid venture capital",
+        "Only domestic private equity",
+        "Levered commodities"
+      ],
+      "why": "Its purpose is short-term stabilization, not aggressive long-term growth."
+    },
+    {
+      "lo": "2.4",
+      "d": "M",
+      "q": "Santiago Principles are:",
+      "a": "Voluntary governance and investment best-practice principles for SWFs",
+      "w": [
+        "A credit rating model",
+        "A futures margin rule",
+        "A foundation spending rule"
+      ],
+      "why": "They help SWFs demonstrate transparency, governance and investment discipline."
+    },
+    {
+      "lo": "2.4",
+      "d": "M",
+      "q": "The Linaburg-Maduell Transparency Index measures:",
+      "a": "SWF transparency using a scorecard",
+      "w": [
+        "Pension funded status",
+        "CTA margin risk",
+        "PE J-curve depth"
+      ],
+      "why": "It is a transparency measure, whereas Santiago Principles are voluntary governance guidelines."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "A family office is best described as:",
+      "a": "A personalized wealth-management platform for one wealthy family or several families",
+      "w": [
+        "A public pension regulator",
+        "A commodity index",
+        "A clearinghouse"
+      ],
+      "why": "SFO = one family. MFO pools several families, often with regulatory and conflict implications."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "First-generation vs later-generation family office:",
+      "a": "First generation often emphasizes preservation; later generations may pursue growth and illiquid assets",
+      "w": [
+        "First generation always uses more PE",
+        "Later generations always avoid tax planning",
+        "They have identical goals"
+      ],
+      "why": "New money often protects wealth; old money may shift toward growth, PE, estate and tax planning."
+    },
+    {
+      "lt": "pick",
+      "lo": "2.5",
+      "d": "M",
+      "q": "LIST - Three tools for a concentrated single-stock position without immediate taxable sale:",
+      "items": [
+        "Completion portfolio",
+        "Collar",
+        "Collateralized loan"
+      ],
+      "wrong": [
+        "Immediate full sale",
+        "Underfunding the pension",
+        "LN-PME"
+      ],
+      "why": "The three C tools diversify or hedge while managing taxes and liquidity."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "A collar on concentrated stock:",
+      "a": "Buys downside protection with a put and sells upside through a call to reduce cost",
+      "w": [
+        "Increases unlimited upside and downside",
+        "Is identical to a cash sale",
+        "Eliminates all tax risk forever"
+      ],
+      "why": "The collar reduces downside and cost but sacrifices some upside."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "A free port is:",
+      "a": "A secure storage facility where assets are treated as in transit, deferring sales tax until exit",
+      "w": [
+        "A tax-free trading exchange",
+        "A pension custodian",
+        "A futures clearinghouse"
+      ],
+      "why": "Free ports matter for lifestyle assets such as art."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "In goals-based private wealth, the three forms of capital are:",
+      "a": "Financial, tangible, and human capital",
+      "w": [
+        "Alpha, beta, and gamma",
+        "Market, credit, and liquidity",
+        "DB, DC, and SWF"
+      ],
+      "why": "Goals-based investing should view the household as one collective portfolio, not disconnected mental accounts."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "In goals-based private wealth, the three risk categories are:",
+      "a": "Aspirational, market, and personal risks",
+      "w": [
+        "Sovereign, corporate, and municipal",
+        "Delta, gamma, and vega",
+        "Daily, weekly, monthly"
+      ],
+      "why": "Aspirational risk is idiosyncratic; market risk is portfolio risk; personal risk concerns life events."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "A US Section 1256 futures contract is tax-advantaged because:",
+      "a": "Gains receive blended long-term and short-term treatment regardless of actual holding period",
+      "w": [
+        "It is never taxed",
+        "It is always treated as ordinary income only",
+        "It avoids all reporting"
+      ],
+      "why": "The exam concept is futures-based strategies can be more tax efficient than short-term swaps."
+    },
+    {
+      "lo": "2.5",
+      "d": "M",
+      "q": "Charity vs philanthropy:",
+      "a": "Charity addresses immediate need; philanthropy tries to solve the underlying problem",
+      "w": [
+        "Charity is always for profit",
+        "Philanthropy never considers impact",
+        "They are identical"
+      ],
+      "why": "This distinction connects wealth management to purpose and impact."
+    }
+  ],
+  "v4": [
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "In MVO, the optimized output is:",
+      "a": "Portfolio weights",
+      "w": [
+        "Expected returns",
+        "Risk aversion itself",
+        "The benchmark name"
+      ],
+      "why": "Expected returns, risk and correlations are inputs. Weights are the output."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "The risk-aversion coefficient lambda represents:",
+      "a": "How strongly the investor penalizes risk in utility",
+      "w": [
+        "The covariance matrix",
+        "The risk-free rate",
+        "The number of assets"
+      ],
+      "why": "Higher lambda means lower desired risky-asset exposure."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "Mean-variance utility balances:",
+      "a": "Expected return against variance penalized by risk aversion",
+      "w": [
+        "Only expected return",
+        "Only tracking error",
+        "Only liquidity"
+      ],
+      "why": "The basic utility idea: more return helps; more variance hurts for a risk-averse investor."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "The variance-covariance matrix contains:",
+      "a": "Variances on the diagonal and covariances off the diagonal",
+      "w": [
+        "Only expected returns",
+        "Only benchmark weights",
+        "Only factor names"
+      ],
+      "why": "Portfolio variance depends on both individual risks and pairwise covariances."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "Covariance can be calculated from:",
+      "a": "Volatility of asset i times volatility of asset j times correlation",
+      "w": [
+        "Return minus risk-free rate",
+        "Alpha divided by beta",
+        "NAV divided by capital calls"
+      ],
+      "why": "Covariance = sigma_i * sigma_j * rho_ij."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "MVO optimizers are called error maximizers because:",
+      "a": "Small input errors, especially expected returns, can create extreme weights",
+      "w": [
+        "They ignore arithmetic completely",
+        "They always choose equal weights",
+        "They cannot use covariance"
+      ],
+      "why": "The optimizer overreacts to high estimated return or low estimated volatility."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "Smoothed illiquid returns can cause MVO to:",
+      "a": "Overweight illiquid assets because volatility and covariance are understated",
+      "w": [
+        "Underweight every illiquid asset automatically",
+        "Ignore all private assets",
+        "Raise observed volatility"
+      ],
+      "why": "Smoothing makes assets look safer and more diversifying than they really are."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "Liquidity-adjusted MVO adds:",
+      "a": "A penalty for liquidity costs or liquidity aversion",
+      "w": [
+        "A bonus for leverage only",
+        "A tax exemption",
+        "A guarantee of alpha"
+      ],
+      "why": "The idea is to reduce utility for assets that impose liquidity strain."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "The hurdle for adding a new asset depends on:",
+      "a": "Risk-free rate plus the current portfolio excess return scaled by the new asset beta to the portfolio",
+      "w": [
+        "Only the new asset standalone return",
+        "Only the manager fee",
+        "Only the asset name"
+      ],
+      "why": "A diversifying low-beta asset has a lower hurdle than a high-beta asset."
+    },
+    {
+      "lo": "3.1",
+      "d": "M",
+      "q": "Black-Litterman reduces extreme MVO weights by:",
+      "a": "Starting from market equilibrium weights and blending in manager views",
+      "w": [
+        "Ignoring all benchmarks",
+        "Forcing every factor exposure to zero",
+        "Using only historical means"
+      ],
+      "why": "No-view assets default toward market weights instead of estimation-error extremes."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.1",
+      "d": "M",
+      "q": "LIST - Objective ways to mitigate MVO estimation error:",
+      "items": [
+        "Resampling",
+        "Shrinkage",
+        "Black-Litterman"
+      ],
+      "wrong": [
+        "Manager marketing",
+        "Higher fees",
+        "Ignoring covariance"
+      ],
+      "why": "RSB: simulate/redraw, constrain noisy sample estimates, or anchor to equilibrium plus views."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.1",
+      "d": "M",
+      "q": "LIST - Ways to handle skewness/kurtosis in MVO:",
+      "items": [
+        "Change the optimization process",
+        "Add constraints",
+        "Limit weights on negative-skew or tail-risk assets"
+      ],
+      "wrong": [
+        "Ignore higher moments",
+        "Increase weight on negative skew",
+        "Use only raw return"
+      ],
+      "why": "Investors dislike variance and kurtosis, and like positive skewness."
+    },
+    {
+      "lo": "3.2",
+      "d": "M",
+      "q": "The main mindset shift in TPA is:",
+      "a": "Evaluate each investment by total-portfolio contribution, not asset-class bucket fit",
+      "w": [
+        "Maximize each bucket separately",
+        "Ignore the risk budget",
+        "Use only public equities"
+      ],
+      "why": "TPA breaks the silo and asks whether marginal capital improves the whole portfolio."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.2",
+      "d": "M",
+      "q": "LIST - Three criticisms of the traditional institutional model that TPA addresses:",
+      "items": [
+        "Bucketing",
+        "Poor alignment of interests",
+        "Weak response to change"
+      ],
+      "wrong": [
+        "Too much total-portfolio thinking",
+        "No benchmarks anywhere",
+        "No constraints"
+      ],
+      "why": "BAR: buckets can hide common risk drivers; bucket alpha can misalign incentives; static SAA misses dynamic opportunities."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.2",
+      "d": "M",
+      "q": "LIST - Four core TPA dimensions:",
+      "items": [
+        "Governance",
+        "Factor lens",
+        "Competition for capital",
+        "Culture"
+      ],
+      "wrong": [
+        "Tax sheltering",
+        "Daily trading",
+        "Manager celebrity"
+      ],
+      "why": "TPA requires board-level goals, risk-factor thinking, scarce-capital competition, and collaborative culture."
+    },
+    {
+      "lo": "3.2",
+      "d": "M",
+      "q": "In TPA, competition for capital means:",
+      "a": "Every idea competes with the best alternative use of marginal capital at the portfolio level",
+      "w": [
+        "Only assets in the same class compete",
+        "Cash is always the winner",
+        "Each team keeps its budget permanently"
+      ],
+      "why": "Capital flows to the best contribution to total portfolio objectives within risk and liquidity constraints."
+    },
+    {
+      "lo": "3.2",
+      "d": "M",
+      "q": "In TPA governance, the board:",
+      "a": "Sets high-level portfolio risk/return goals and empowers teams, while retaining fiduciary duty",
+      "w": [
+        "Delegates fiduciary duty away completely",
+        "Selects every security",
+        "Ignores the reference portfolio"
+      ],
+      "why": "Delegation of decisions is not delegation of fiduciary responsibility."
+    },
+    {
+      "lo": "3.2",
+      "d": "M",
+      "q": "A TPA reference portfolio is:",
+      "a": "A customized benchmark that defines return target and risk budget",
+      "w": [
+        "A mandatory legal document in all cases",
+        "A list of every private deal",
+        "A daily trading algorithm"
+      ],
+      "why": "Recommended, not always required; it anchors total-portfolio success measurement."
+    },
+    {
+      "lo": "3.2",
+      "d": "M",
+      "q": "SAA vs TPA success metric:",
+      "a": "SAA often compares to asset-class benchmarks; TPA compares to portfolio-level goals",
+      "w": [
+        "Both only compare to the S&P 500",
+        "TPA ignores performance",
+        "SAA has no benchmarks"
+      ],
+      "why": "TPA changes the success question from local bucket alpha to total portfolio outcome."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Total-risk contribution of an asset combines:",
+      "a": "Correlation to portfolio, asset volatility, and asset weight",
+      "w": [
+        "Only expected return",
+        "Only the number of shares",
+        "Only the benchmark fee"
+      ],
+      "why": "Risk contribution is not just volatility. Correlation and weight matter."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Factor-level risk decomposition separates:",
+      "a": "Known factor contributions and a residual unknown-source contribution",
+      "w": [
+        "Fees from taxes only",
+        "Cash flows from NAV only",
+        "Nominal return from real return only"
+      ],
+      "why": "Factor decomposition helps see whether risk comes from chosen factors or residual exposures."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Core vs satellite:",
+      "a": "Core is passive, low-cost, stable SAA; satellite is active, tactical, alpha-seeking",
+      "w": [
+        "Core is always PE; satellite is always cash",
+        "Core is short-term; satellite is passive",
+        "There is no risk difference"
+      ],
+      "why": "The same asset may be core for one investor and satellite for another depending on objective."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Bottom-up allocation focuses first on:",
+      "a": "Security or fund-level screening",
+      "w": [
+        "Macro country weights first",
+        "Only reference portfolio weights",
+        "Only accounting NAV"
+      ],
+      "why": "Bottom-up is simple and robust but can create concentration and idiosyncratic risk."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Top-down allocation focuses first on:",
+      "a": "Macro, political, economic, currency and broad risk conditions",
+      "w": [
+        "Only individual fund manager pitches",
+        "Only past security returns",
+        "Only tax lots"
+      ],
+      "why": "Top-down explicitly considers the environment but may lack enough good managers in the chosen segment."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "A PE firm often shifts from bottom-up to top-down as it:",
+      "a": "Moves from early capital deployment needs to a larger, established deal pipeline",
+      "w": [
+        "Becomes less experienced",
+        "Stops doing due diligence",
+        "Moves to public equities"
+      ],
+      "why": "Early PE firms need to deploy; large platforms can choose among many sectors and geographies."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Risk budgeting sets:",
+      "a": "An aggregate risk target and then allocates risk across buckets",
+      "w": [
+        "Equal dollars in every asset",
+        "No risk target at all",
+        "Only tax budgets"
+      ],
+      "why": "Expected returns usually enter after risk constraints are set."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Risk budgeting vs risk parity:",
+      "a": "Risk budgeting targets an aggregate risk level; risk parity equalizes marginal risk contributions",
+      "w": [
+        "They are identical",
+        "Risk parity uses only expected return",
+        "Risk budgeting ignores risk"
+      ],
+      "why": "Risk parity has no separate aggregate target in the same way; equal risk contribution is the central goal."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Risk parity considers correlation because:",
+      "a": "Marginal risk contribution depends on diversification, not volatility alone",
+      "w": [
+        "Correlation is always zero",
+        "Volatility is irrelevant",
+        "Only expected return matters"
+      ],
+      "why": "High-vol assets can still receive weight if they diversify the portfolio."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Risk parity portfolios are often levered because:",
+      "a": "The unlevered risk-parity portfolio may be low risk but high Sharpe, so leverage raises it to the risk budget",
+      "w": [
+        "They are low Sharpe by definition",
+        "They must violate all limits",
+        "They do not use bonds"
+      ],
+      "why": "Evaluate risk parity on Sharpe and funding liquidity risk, not raw return alone."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Leverage aversion can create the low-volatility and betting-against-beta anomalies because:",
+      "a": "Investors avoid levering low-vol assets, so those assets may be underpriced and earn higher future risk-adjusted returns",
+      "w": [
+        "Low-vol assets are always riskless",
+        "High-beta assets are illegal",
+        "Leverage eliminates all risk"
+      ],
+      "why": "This is the economic story behind why low-vol assets can outperform on a risk-adjusted basis."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Inverse-volatility weighting differs from risk parity because it:",
+      "a": "Uses volatility only and ignores correlations",
+      "w": [
+        "Uses only correlations",
+        "Uses MVO expected returns",
+        "Requires private equity only"
+      ],
+      "why": "Risk parity also considers correlation through marginal contribution to portfolio risk."
+    },
+    {
+      "lo": "3.3",
+      "d": "M",
+      "q": "Conditional TAA models differ from unconditional models because they:",
+      "a": "Use current market conditions, so weights can change sharply",
+      "w": [
+        "Use only long-term historical averages",
+        "Never change weights",
+        "Ignore current returns"
+      ],
+      "why": "Unconditional models use historical means/vols/correlations and change slowly."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.3",
+      "d": "M",
+      "q": "LIST - Three steps to implement risk parity:",
+      "items": [
+        "Define risk",
+        "Measure marginal risk contribution",
+        "Find weights by trial and error so each contribution is equal"
+      ],
+      "wrong": [
+        "Run only CAPM",
+        "Ignore correlations",
+        "Maximize fee income"
+      ],
+      "why": "Risk parity weights are not solved by standard MVO; trial-and-error is often used."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.3",
+      "d": "M",
+      "q": "LIST - Main criticisms of risk parity:",
+      "items": [
+        "Past low-vol outperformance may not persist",
+        "Funding liquidity risk from leverage",
+        "Unproven extension to alternatives"
+      ],
+      "wrong": [
+        "It ignores all risk",
+        "It never uses leverage",
+        "It has no diversification"
+      ],
+      "why": "History, funding liquidity, and applicability to alternatives are key objections."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "The overcommitment ratio compares:",
+      "a": "Total commitments to resources available for commitments",
+      "w": [
+        "NAV to benchmark return",
+        "Fees to alpha",
+        "Cap rate to NOI"
+      ],
+      "why": "Overcommitment keeps capital working but too much creates capital-call default risk."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "The optimal overcommitment ratio minimizes:",
+      "a": "Expected idle-capital opportunity cost plus expected illiquidity costs",
+      "w": [
+        "Only management fees",
+        "Only tracking error",
+        "Only tax rate"
+      ],
+      "why": "Too much liquidity creates drag; too little creates forced sales, missed calls, or lost deals."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "When an LP defaults on a capital call:",
+      "a": "Prior paid-in capital may be forfeited or held as collateral and GP relationships can be damaged",
+      "w": [
+        "Nothing happens",
+        "The GP must finance it at no cost",
+        "The LP earns a premium"
+      ],
+      "why": "Default can destroy access to future GP opportunities."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "A liquid alternative investment is:",
+      "a": "Alternative-style exposure delivered with market liquidity and retail-friendly structure",
+      "w": [
+        "Always a private fund with lockup",
+        "Only direct real estate",
+        "Only a bank deposit"
+      ],
+      "why": "Liquid alts are more accessible and lower-fee but may sacrifice illiquidity premium and flexibility."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "Liquid alternatives often underperform comparable private LP funds because:",
+      "a": "They cannot earn full illiquidity premium and face fee/skill/regulatory constraints",
+      "w": [
+        "They always use more leverage",
+        "They are all fraudulent",
+        "They never diversify"
+      ],
+      "why": "Regulation can restrict leverage, shorting and diversification, and lower fees may attract less-skilled managers."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.4",
+      "d": "M",
+      "q": "LIST - Five liquid-alternative fund types:",
+      "items": [
+        "Skill-based replication",
+        "Liquidity-based replication",
+        "Constrained clone",
+        "Unconstrained clone",
+        "Diversified absolute-return"
+      ],
+      "wrong": [
+        "Defined benefit plan",
+        "Foundation corpus",
+        "Sovereign reserve"
+      ],
+      "why": "Know whether the product replicates skill, illiquid exposure, or a constrained/unconstrained strategy."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "Co-investing means:",
+      "a": "An LP invests alongside a GP in specific companies, usually at reduced fees",
+      "w": [
+        "Buying a public index fund",
+        "Delegating all assets to a custodian",
+        "Buying a bond ladder"
+      ],
+      "why": "The LP uses the GP relationship and skill but must vet and commit quickly."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "Co-investing can shorten the J-curve because:",
+      "a": "Fees are lower and capital is deployed more directly",
+      "w": [
+        "It removes every risk",
+        "It guarantees top quartile returns",
+        "It eliminates follow-on needs"
+      ],
+      "why": "It can also widen dispersion or lengthen pain if follow-on capital is needed."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.4",
+      "d": "M",
+      "q": "LIST - LP-side co-investing challenges:",
+      "items": [
+        "Cost of in-house program",
+        "Access to deals",
+        "Reduced diversification",
+        "Organizational constraints"
+      ],
+      "wrong": [
+        "No need for due diligence",
+        "Guaranteed deal flow",
+        "Regulatory approvals as the main concern"
+      ],
+      "why": "Co-investing is not free alpha; LPs need resources, speed, and access."
+    },
+    {
+      "lt": "pick",
+      "lo": "3.4",
+      "d": "M",
+      "q": "LIST - GP-side co-investing challenges:",
+      "items": [
+        "LP lack of follow-through",
+        "Deal-processing delays",
+        "Added costs",
+        "Strained relationships with non-co-investing LPs"
+      ],
+      "wrong": [
+        "No conflicts ever",
+        "Instant execution",
+        "No monitoring"
+      ],
+      "why": "Co-investing can create operational and relationship problems for GPs."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "Secondary-market buyers of PE stakes are attracted by:",
+      "a": "Discounted entry and better visibility into the underlying portfolio",
+      "w": [
+        "No liquidity risk in stress",
+        "Guaranteed valuation accuracy",
+        "Immediate tax exemption"
+      ],
+      "why": "Secondaries can improve visibility but the market is still small and liquidity can vanish."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "The denominator effect is:",
+      "a": "A fall in public assets makes private allocations look overweight, motivating secondary sales",
+      "w": [
+        "A formula for option delta",
+        "A cap-rate spread",
+        "A VaR critical value"
+      ],
+      "why": "Sellers may use secondaries to rebalance or raise liquidity after public-market declines."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "A secondary PE stake is valued using:",
+      "a": "Discount or premium to NAV plus PV of expected capital calls and distributions at required IRR",
+      "w": [
+        "Only last year return",
+        "Only public beta",
+        "Only manager reputation"
+      ],
+      "why": "The valuation depends on planned capital calls, distributions and the LP required return."
+    },
+    {
+      "lo": "3.4",
+      "d": "M",
+      "q": "A continuation fund occurs when:",
+      "a": "A GP moves legacy-fund assets into a new fund with more time and often lower fees or reset incentives",
+      "w": [
+        "A company lists immediately",
+        "An LP defaults on every call",
+        "A CTA posts margin"
+      ],
+      "why": "Risks: extra fees, carry reset, conflicts, transaction costs, and distorted success statistics."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "Constant-mix rebalancing is:",
+      "a": "Concave and contrarian: sell winners and buy losers",
+      "w": [
+        "Convex and momentum-based",
+        "A pure buy-and-hold strategy",
+        "A listed option only"
+      ],
+      "why": "Constant mix works best in volatile non-trending or mean-reverting markets."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "CPPI is:",
+      "a": "Convex and momentum-based: buy winners and sell losers while protecting a floor",
+      "w": [
+        "Concave and contrarian",
+        "Always 100% cash",
+        "A peer-group benchmark"
+      ],
+      "why": "CPPI raises risky allocation as cushion rises and cuts it as cushion falls."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "OBPI protects the floor by:",
+      "a": "Combining a risk-free bond with option exposure",
+      "w": [
+        "Daily margin only",
+        "Peer-group benchmarking",
+        "Ignoring downside"
+      ],
+      "why": "OBPI keeps upside via options and avoids CPPI absorption risk."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "Effect of rebalancing on expected value depends on price regime:",
+      "a": "Random walk unchanged, trend can hurt, mean reversion can help; volatility falls in all regimes",
+      "w": [
+        "Always raises expected value",
+        "Always lowers expected value",
+        "Has no effect on volatility"
+      ],
+      "why": "The trap: rebalancing boosts geometric return through lower volatility, not necessarily expected value."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "Gap risk in CPPI is:",
+      "a": "The floor is breached because risky assets fall more than 1 divided by the multiplier before rebalancing",
+      "w": [
+        "The option expires worthless",
+        "The manager beats benchmark",
+        "NAV is above HWM"
+      ],
+      "why": "High multiplier and high volatility increase gap risk."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "Absorption risk in CPPI is:",
+      "a": "Once the floor is hit, risky allocation becomes zero and the portfolio misses recovery",
+      "w": [
+        "The floor rises automatically forever",
+        "The manager pays no fees",
+        "The option gains unlimited upside"
+      ],
+      "why": "Buy-and-hold and constant mix do not fully de-equitize in the same way."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "TIPP modifies CPPI by:",
+      "a": "Ratcheting the floor upward as a percentage of a prior high-water mark",
+      "w": [
+        "Removing the floor",
+        "Using no risky assets ever",
+        "Replacing assets with liabilities"
+      ],
+      "why": "TIPP locks in gains by moving the floor, while dynamic multiplier changes M."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "OBPI vs CPPI after a crash:",
+      "a": "OBPI can retain upside through the option; CPPI may be absorbed into cash",
+      "w": [
+        "Both always lose all upside",
+        "CPPI always has more upside after floor breach",
+        "OBPI has no floor"
+      ],
+      "why": "This is why OBPI has no absorption risk in the same way."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "Put replication by dynamic trading uses:",
+      "a": "A risk-free bond plus short delta shares with frequent rebalancing",
+      "w": [
+        "A static commodity index",
+        "A PE peer cohort",
+        "Only a foundation spending rule"
+      ],
+      "why": "Advantages: no listed option needed, no OTC counterparty, no premium. Disadvantages: gap, rebalancing cost, delta-estimation risk."
+    },
+    {
+      "lo": "3.5",
+      "d": "M",
+      "q": "Replacing a hedge fund manager below high-water mark has a fee cost because:",
+      "a": "The new manager resets the HWM and the investor loses the old loss carryforward",
+      "w": [
+        "The old manager always has zero incentive fees forever",
+        "The NAV cannot recover",
+        "All fees are refunded"
+      ],
+      "why": "New-manager alpha must exceed the value of the foregone incentive-fee shield."
+    }
+  ],
+  "v1": [
+    {
+      "lo": "4.1.1",
+      "d": "M",
+      "q": "Separating alpha and beta means:",
+      "a": "Use low-cost beta exposure while pursuing alpha from another source",
+      "w": [
+        "Alpha and beta are mathematically identical",
+        "Avoid all derivatives",
+        "Only hold cash"
+      ],
+      "why": "Derivatives allow beta to be managed separately from the alpha source."
+    },
+    {
+      "lo": "4.1.1",
+      "d": "M",
+      "q": "To reduce portfolio beta using futures, the manager should:",
+      "a": "Short broad index futures",
+      "w": [
+        "Go long broad index futures",
+        "Buy more high-beta stocks",
+        "Ignore the current beta"
+      ],
+      "why": "Long futures raise beta; short futures lower beta."
+    },
+    {
+      "lo": "4.1.1",
+      "d": "M",
+      "q": "Portable alpha is:",
+      "a": "Alpha pursued from a benchmark different from the beta benchmark, usually with derivatives",
+      "w": [
+        "Pure passive beta",
+        "A foundation spending rule",
+        "A CTA margin ratio"
+      ],
+      "why": "The total-portfolio effect scales by alpha capital divided by total portfolio."
+    },
+    {
+      "lo": "4.1.2",
+      "d": "M",
+      "q": "Put-call parity assumes:",
+      "a": "European options with identical strike and expiration",
+      "w": [
+        "American options with any strike",
+        "Futures only",
+        "No underlying asset"
+      ],
+      "why": "The parity relation creates equivalent riskless payoffs."
+    },
+    {
+      "lo": "4.1.2",
+      "d": "M",
+      "q": "Long put plus short call in the parity hedge is:",
+      "a": "Gamma- and vega-neutral but still has delta exposure",
+      "w": [
+        "Delta-free but long gamma",
+        "Only a volatility long",
+        "Identical to a straddle"
+      ],
+      "why": "The underlying stock position handles delta."
+    },
+    {
+      "lo": "4.1.2",
+      "d": "M",
+      "q": "Black-Scholes call delta is:",
+      "a": "N(d1)",
+      "w": [
+        "N(d1) - 1",
+        "1 - N(d1)",
+        "N(d2) - 1"
+      ],
+      "why": "Put delta = N(d1) - 1."
+    },
+    {
+      "lo": "4.1.2",
+      "d": "M",
+      "q": "Nontraders typically use options as:",
+      "a": "Directional bets with leverage, limited downside, or skew",
+      "w": [
+        "Only volatility-neutral instruments",
+        "Only accounting entries",
+        "Only collateral"
+      ],
+      "why": "Traders instead focus on volatility and delta hedge with the underlying."
+    },
+    {
+      "lo": "4.1.3",
+      "d": "M",
+      "q": "The delta-hedge ratio in a binomial tree is:",
+      "a": "Change in option value divided by change in stock value",
+      "w": [
+        "Option premium divided by strike",
+        "Stock value divided by risk-free rate",
+        "Gamma divided by vega"
+      ],
+      "why": "For each option owned, short the hedge ratio shares of the underlying."
+    },
+    {
+      "lo": "4.1.3",
+      "d": "M",
+      "q": "Delta hedging a properly priced option should produce:",
+      "a": "Zero arbitrage profit",
+      "w": [
+        "Guaranteed positive profit",
+        "The risk-free rate only",
+        "A foundation spending rate"
+      ],
+      "why": "Profit arises only if the derivative is mispriced relative to the underlying."
+    },
+    {
+      "lo": "4.1.3",
+      "d": "M",
+      "q": "Arithmetic vs geometric motion in delta hedging:",
+      "a": "Arithmetic equal dollar moves can leave shares static; geometric percent moves require dynamic rehedging",
+      "w": [
+        "Geometric means no rebalancing",
+        "Arithmetic is real-world standard",
+        "They are identical"
+      ],
+      "why": "Real asset prices tend to move geometrically, so hedge ratios change over time."
+    },
+    {
+      "lt": "pick",
+      "lo": "4.1.4",
+      "d": "M",
+      "q": "LIST - Three observations on delta hedging:",
+      "items": [
+        "Not a directional bet",
+        "Efficiently priced strategies have zero NPV",
+        "Partly a bet on volatility"
+      ],
+      "wrong": [
+        "Always a high-alpha strategy",
+        "Always a tax strategy",
+        "Always a liquidity strategy"
+      ],
+      "why": "Delta hedging is about mispricing and volatility, not simply stock direction."
+    },
+    {
+      "lo": "4.1.4",
+      "d": "M",
+      "q": "Infrequent rehedging is a bet on:",
+      "a": "Positive autocorrelation or trending prices",
+      "w": [
+        "Negative autocorrelation",
+        "Zero volatility",
+        "Credit downgrades"
+      ],
+      "why": "If prices trend, long gamma can benefit from not constantly rebalancing."
+    },
+    {
+      "lo": "4.1.4",
+      "d": "M",
+      "q": "Frequent rehedging is more attractive when:",
+      "a": "Prices are mean-reverting, subject to transaction costs",
+      "w": [
+        "Prices trend strongly",
+        "Options are all deep in-the-money",
+        "No autocorrelation exists"
+      ],
+      "why": "Negative autocorrelation supports frequent rebalancing."
+    },
+    {
+      "lo": "4.1.4",
+      "d": "M",
+      "q": "Delta rebalancing is most effective for options that are:",
+      "a": "Short-dated and near the money",
+      "w": [
+        "Long-dated and deep in the money",
+        "Deep out of the money with zero gamma",
+        "Expired"
+      ],
+      "why": "Gamma is highest near the money and shorter maturity."
+    },
+    {
+      "lo": "4.1.5",
+      "d": "M",
+      "q": "Diversification return from rebalancing is strongest when assets have:",
+      "a": "High volatility, low correlation, and mean reversion",
+      "w": [
+        "Low volatility, high correlation, and strong trend",
+        "No volatility",
+        "Perfect correlation"
+      ],
+      "why": "Commodities often fit this profile."
+    },
+    {
+      "lo": "4.1.5",
+      "d": "M",
+      "q": "Volatility reduction improves:",
+      "a": "Geometric mean return, not the arithmetic expected value by itself",
+      "w": [
+        "Only the arithmetic expected value",
+        "Only coupon income",
+        "Only beta"
+      ],
+      "why": "Lower volatility reduces volatility drag on compound returns."
+    },
+    {
+      "lo": "4.1.5",
+      "d": "M",
+      "q": "The commodity mean-reversion intuition is:",
+      "a": "High prices reduce demand or increase supply, pushing prices back toward normal",
+      "w": [
+        "High prices always rise forever",
+        "Supply and demand are irrelevant",
+        "Commodities have no volatility"
+      ],
+      "why": "The cure for high prices is high prices."
+    },
+    {
+      "lo": "4.2.1",
+      "d": "M",
+      "q": "Alpha dispersion is:",
+      "a": "The spread between best and worst managers",
+      "w": [
+        "Average return minus fees",
+        "Correlation with bonds",
+        "The number of benchmarks"
+      ],
+      "why": "Dispersion is wider in inefficient markets like VC, PE, noncore real estate and hedge funds."
+    },
+    {
+      "lo": "4.2.1",
+      "d": "M",
+      "q": "Alpha persistence is strongest in:",
+      "a": "Less efficient private markets, especially private equity",
+      "w": [
+        "Large-cap public equities",
+        "Treasury bills",
+        "Money market funds"
+      ],
+      "why": "Public markets show little persistence; PE can show multi-year persistence."
+    },
+    {
+      "lo": "4.2.2",
+      "d": "M",
+      "q": "True alpha is:",
+      "a": "Security selection excess return with no discernible style tilt",
+      "w": [
+        "Value beta",
+        "Multiple expansion only",
+        "A public index fund"
+      ],
+      "why": "Evidence suggests true alpha is extremely difficult; apparent alpha may be misidentified beta or luck."
+    },
+    {
+      "lo": "4.2.2",
+      "d": "M",
+      "q": "Manufactured alpha is:",
+      "a": "Repeatable value creation by improving and repositioning an asset",
+      "w": [
+        "Forced buying after regulation",
+        "Pure passive beta",
+        "Cash collateral yield"
+      ],
+      "why": "Private equity is the classic setting: improve revenue, margins, operations or governance."
+    },
+    {
+      "lo": "4.2.2",
+      "d": "M",
+      "q": "Transitional alpha comes from:",
+      "a": "Temporary price distortions when natural buyers leave and later return",
+      "w": [
+        "Permanent structural buyer scarcity",
+        "Pure market beta",
+        "A fixed coupon"
+      ],
+      "why": "Spin-offs and post-bankruptcy reorganizations are common examples."
+    },
+    {
+      "lo": "4.2.3",
+      "d": "M",
+      "q": "Inaccessible risk premium differs from transitional alpha because:",
+      "a": "The distortion can persist longer due to structural access limits",
+      "w": [
+        "It is always public equity",
+        "It requires no buyer scarcity",
+        "It is a short-term spin-off only"
+      ],
+      "why": "Accredited-investor restrictions and private-loan markets can create longer-lasting scarcity."
+    },
+    {
+      "lo": "4.2.4",
+      "d": "M",
+      "q": "To identify manufactured alpha in a PE return bridge, allocators should:",
+      "a": "Separate each driver into market/industry effect and manager-skill effect",
+      "w": [
+        "Credit all multiple expansion as skill",
+        "Ignore revenue growth",
+        "Use only public beta"
+      ],
+      "why": "Skill-driven revenue growth and margin expansion support manufactured alpha; multiple normalization may be transitional."
+    },
+    {
+      "lo": "4.2.5",
+      "d": "M",
+      "q": "A benchmark specified after the fact violates which Bailey idea?",
+      "a": "Specified in advance",
+      "w": [
+        "Investable",
+        "Measurable",
+        "Style matched"
+      ],
+      "why": "Moving the goalposts destroys benchmark usefulness."
+    },
+    {
+      "lo": "4.2.7",
+      "d": "M",
+      "q": "Omitted risk-factor bias in an up market usually:",
+      "a": "Overstates alpha for assets positively exposed to the missing factor",
+      "w": [
+        "Always understates alpha",
+        "Has no effect",
+        "Eliminates beta"
+      ],
+      "why": "The model credits the manager for risk premia that should have been attributed to factors."
+    },
+    {
+      "lo": "4.2.8",
+      "d": "M",
+      "q": "CAPM is weak for alternatives because alternatives often have:",
+      "a": "Multiperiod, non-normal, illiquid, and investor-specific risks",
+      "w": [
+        "Only market beta and normal returns",
+        "No idiosyncratic risk",
+        "Perfect liquidity"
+      ],
+      "why": "Multifactor models are usually more appropriate."
+    },
+    {
+      "lo": "4.3.1",
+      "d": "M",
+      "q": "Commodity index weights can be based on:",
+      "a": "Value or fixed quantity",
+      "w": [
+        "Only market capitalization",
+        "Only manager skill",
+        "Only tax status"
+      ],
+      "why": "Then sector/component weighting can use world production, liquidity or open interest."
+    },
+    {
+      "lo": "4.3.1",
+      "d": "M",
+      "q": "A commodity excess-return index includes:",
+      "a": "The futures position return only",
+      "w": [
+        "Futures plus collateral yield",
+        "Only spot prices",
+        "Only dividends"
+      ],
+      "why": "Total return adds collateral yield."
+    },
+    {
+      "lo": "4.3.2",
+      "d": "M",
+      "q": "Long-only futures benchmarks are weak for CTAs because CTAs often:",
+      "a": "Use significant short exposure and diverse strategies",
+      "w": [
+        "Never trade futures",
+        "Only hold cash",
+        "Always match equity indices"
+      ],
+      "why": "Passive trend indices work for trend followers; peer groups are better for discretionary CTAs."
+    },
+    {
+      "lo": "4.3.3",
+      "d": "M",
+      "q": "LN-PME compares:",
+      "a": "The PE fund IRR to the IRR of identical cash flows invested in a public index",
+      "w": [
+        "Only public equity returns",
+        "Only quartile ranks",
+        "Only GP fees"
+      ],
+      "why": "It is cash-weighted and can fail when PE strongly outperforms."
+    },
+    {
+      "lo": "4.3.3",
+      "d": "M",
+      "q": "KS-PME greater than 1 means:",
+      "a": "The PE fund outperformed the public index",
+      "w": [
+        "The PE fund underperformed",
+        "The fund IRR equals 1 percent",
+        "The benchmark is invalid"
+      ],
+      "why": "KS-PME is distributions over indexed capital calls; 1.0 means match."
+    },
+    {
+      "lo": "4.3.4",
+      "d": "M",
+      "q": "A PE peer cohort should be similar in:",
+      "a": "Vintage, geography, development stage, and specialization",
+      "w": [
+        "Only fund name",
+        "Only management fee",
+        "Only custodian"
+      ],
+      "why": "If the cohort is too small, widen the definition carefully."
+    },
+    {
+      "lo": "4.3.5",
+      "d": "M",
+      "q": "Real estate cap rate equals:",
+      "a": "NOI divided by value",
+      "w": [
+        "NAV divided by distributions",
+        "Debt divided by TEV",
+        "Alpha divided by beta"
+      ],
+      "why": "It is an unlevered return proxy and starting point for core real estate."
+    },
+    {
+      "lo": "4.3.5",
+      "d": "M",
+      "q": "For noncore real estate, the best benchmark approach is usually:",
+      "a": "Core real estate return plus a risk premium for noncore risk",
+      "w": [
+        "A fixed absolute hurdle in all rate regimes",
+        "Unreliable observed cap rates only",
+        "The risk-free rate only"
+      ],
+      "why": "This adjusts for interest-rate/inflation environment and relative risk."
+    },
+    {
+      "lo": "4.4.1",
+      "d": "M",
+      "q": "Trading level in managed futures is:",
+      "a": "Capital traded and the denominator for leveraged returns and fees",
+      "w": [
+        "Only actual cash posted",
+        "Only excess return",
+        "Only variation margin"
+      ],
+      "why": "Trading level = funding level + notional funding."
+    },
+    {
+      "lo": "4.4.1",
+      "d": "M",
+      "q": "Maintenance margin breach triggers:",
+      "a": "A top-up back to the initial-margin level",
+      "w": [
+        "Automatic profit",
+        "No action",
+        "Permanent closure at NAV"
+      ],
+      "why": "Maintenance is the floor for an open position."
+    },
+    {
+      "lo": "4.4.1",
+      "d": "M",
+      "q": "Variation margin is:",
+      "a": "Daily settlement of gains and losses on futures",
+      "w": [
+        "The initial deposit to open a trade",
+        "A quarterly appraisal",
+        "A PE distribution"
+      ],
+      "why": "Daily settlement means futures have no net liquidating value beyond daily gain/loss."
+    },
+    {
+      "lo": "4.4.2",
+      "d": "M",
+      "q": "A one-day 99 percent VaR states:",
+      "a": "Loss should not exceed the VaR amount on 99 percent of days; 1 percent tail remains",
+      "w": [
+        "Loss can never exceed VaR",
+        "Expected return equals VaR",
+        "VaR is always the maximum loss"
+      ],
+      "why": "VaR is a quantile, not a hard maximum."
+    },
+    {
+      "lo": "4.4.2",
+      "d": "M",
+      "q": "Parametric VaR assumes:",
+      "a": "A known return distribution, typically normal",
+      "w": [
+        "No distribution at all",
+        "Always fat tails exactly",
+        "Only private appraisals"
+      ],
+      "why": "If returns are non-normal, use other methods."
+    },
+    {
+      "lo": "4.4.3",
+      "d": "M",
+      "q": "The Omega ratio uses:",
+      "a": "The whole return distribution above and below a target return",
+      "w": [
+        "Only standard deviation",
+        "Only beta",
+        "Only maximum return"
+      ],
+      "why": "Omega = upside partial moments over downside partial moments."
+    },
+    {
+      "lo": "4.4.4",
+      "d": "M",
+      "q": "Return smoothing understates:",
+      "a": "Volatility, correlation, and beta",
+      "w": [
+        "Long-term mean return mainly",
+        "All fees",
+        "All returns"
+      ],
+      "why": "Smoothing mutes outliers and can lead to excessive allocation."
+    },
+    {
+      "lo": "4.4.5",
+      "d": "M",
+      "q": "A higher first-order autocorrelation in reported returns means:",
+      "a": "More smoothing and less reliance on current true market information",
+      "w": [
+        "Less smoothing",
+        "No need for unsmoothing",
+        "Zero valuation lag"
+      ],
+      "why": "In return-unsmoothing formulas, higher rho amplifies the correction."
+    },
+    {
+      "lo": "4.4.6",
+      "d": "M",
+      "q": "Unsmoothing a return series requires:",
+      "a": "Specify autocorrelation form, estimate parameters, and insert reported returns plus rho into the model",
+      "w": [
+        "Only increase fees",
+        "Only use peer groups",
+        "Only remove all private assets"
+      ],
+      "why": "The process estimates a true unobservable return series from smoothed reported data."
+    },
+    {
+      "lo": "4.4.7",
+      "d": "M",
+      "q": "With positive autocorrelation, true volatility and true beta are usually:",
+      "a": "Higher than reported smoothed volatility and beta",
+      "w": [
+        "Lower than reported",
+        "Exactly the same",
+        "Always zero"
+      ],
+      "why": "Smoothed series understate risk and systematic exposure."
+    },
+    {
+      "lo": "4.5.1",
+      "d": "M",
+      "q": "Which risk measurement component answers WHAT data is required?",
+      "a": "Dimensions of risk",
+      "w": [
+        "Risk reporting",
+        "Frequency of data collection",
+        "Investment or position level"
+      ],
+      "why": "Who = reporting; What = dimensions; How = aggregation/systems; When = frequency; Where = position level."
+    },
+    {
+      "lo": "4.5.1",
+      "d": "M",
+      "q": "Which risk measurement component answers WHO receives measures?",
+      "a": "Risk reporting",
+      "w": [
+        "Dimensions of risk",
+        "Aggregation and systems development",
+        "Investment or position level"
+      ],
+      "why": "Risk reporting defines who gets the measures and reports."
+    },
+    {
+      "lo": "4.5.1",
+      "d": "M",
+      "q": "Which risk measurement component answers HOW data is collected and modeled?",
+      "a": "Aggregation and systems development",
+      "w": [
+        "Risk reporting",
+        "Frequency of data collection",
+        "Investment or position level"
+      ],
+      "why": "How = aggregation and systems. Risk aggregation is nonlinear because correlations matter."
+    },
+    {
+      "lo": "4.5.1",
+      "d": "M",
+      "q": "Which risk measurement component answers WHERE data is gathered?",
+      "a": "Investment or position level",
+      "w": [
+        "Risk reporting",
+        "Dimensions of risk",
+        "Frequency of data collection"
+      ],
+      "why": "Where = position/investment level, where valuation inputs and exposures are captured."
+    },
+    {
+      "lo": "4.5.1",
+      "d": "M",
+      "q": "Level 3 assets in a pricing matrix are:",
+      "a": "Illiquid, model-based, low-confidence valuations, often quarterly",
+      "w": [
+        "Daily market prices with highest confidence",
+        "Observable data with perfect liquidity",
+        "Cash equivalents only"
+      ],
+      "why": "Level 1 is liquid with market prices; Level 2 is observable but less frequent; Level 3 is illiquid and model-based."
+    },
+    {
+      "lo": "4.5.2",
+      "d": "M",
+      "q": "Total portfolio risk cannot be summed linearly because:",
+      "a": "Correlations and nonlinear exposures affect aggregate risk",
+      "w": [
+        "Returns cannot be averaged",
+        "Risk has no data",
+        "All assets are independent"
+      ],
+      "why": "Returns aggregate as weighted averages; risk aggregation must consider correlations, simulations, and nonlinear exposures."
+    },
+    {
+      "lt": "pick",
+      "lo": "4.5.2",
+      "d": "M",
+      "q": "LIST - Examples of qualitative risk dimensions for alternatives:",
+      "items": [
+        "Business operations risk",
+        "Legal/regulatory/compliance risk",
+        "Key-person risk",
+        "Transparency and valuation risk"
+      ],
+      "wrong": [
+        "Dividend yield only",
+        "Coupon schedule only",
+        "Ticker symbol only"
+      ],
+      "why": "Dimensions of risk include both quantitative and qualitative risks, especially for alternatives."
+    },
+    {
+      "lt": "pick",
+      "lo": "4.5.2",
+      "d": "M",
+      "q": "LIST - Key-person risk mitigants:",
+      "items": [
+        "Avoid relying on one individual",
+        "Key-person insurance",
+        "Extraordinary redemption rights",
+        "Diversified substitutable alternatives"
+      ],
+      "wrong": [
+        "Increase single-person discretion",
+        "Remove documentation",
+        "Ignore succession"
+      ],
+      "why": "Key-person risk is mitigated with process, insurance, legal rights, and diversification."
+    },
+    {
+      "lo": "4.5.3",
+      "d": "M",
+      "q": "A due-diligence tracking matrix is used to:",
+      "a": "Track qualitative risk measures and diligence activities for managers or investments",
+      "w": [
+        "Calculate option delta only",
+        "Set futures margin only",
+        "Price public bonds only"
+      ],
+      "why": "It supports quarterly risk reviews and action recommendations."
+    },
+    {
+      "lo": "4.5.4",
+      "d": "M",
+      "q": "Daily data collection is useful because it:",
+      "a": "Feeds rolling measures and early detection of risk trends or exceptions",
+      "w": [
+        "Must all be reported daily to the board",
+        "Eliminates all noise",
+        "Only applies to Level 3 assets"
+      ],
+      "why": "Daily data can be aggregated into weekly, monthly, quarterly and annual reports."
+    },
+    {
+      "lo": "4.5.5",
+      "d": "M",
+      "q": "Quarterly risk reports usually add:",
+      "a": "Manager calls, Level 3 valuations, and deeper attribution/performance review",
+      "w": [
+        "Only daily price ticks",
+        "Only market-cap weights",
+        "Only tax-lot reports"
+      ],
+      "why": "Quarterly reporting summarizes interim data and adds manager-level diligence."
+    },
+    {
+      "lo": "4.5.5",
+      "d": "M",
+      "q": "Annual manager review often includes:",
+      "a": "On-site due diligence, mandate review, compliance documentation, and background checks over time",
+      "w": [
+        "Only daily moving averages",
+        "No qualitative review",
+        "Only a VaR calculation"
+      ],
+      "why": "Annual reviews are broader and often mirror initial investment due diligence."
+    },
+    {
+      "lt": "pick",
+      "lo": "4.5.6",
+      "d": "M",
+      "q": "LIST - SEC cybersecurity preparedness areas:",
+      "items": [
+        "Governance and risk assessment",
+        "Access rights and controls",
+        "Data loss prevention",
+        "Vendor management",
+        "Training",
+        "Incident response"
+      ],
+      "wrong": [
+        "Dividend policy",
+        "PE vintage year",
+        "Cap-rate spread"
+      ],
+      "why": "Cyber risk management is part of operational risk for investment firms."
+    },
+    {
+      "lt": "pick",
+      "lo": "4.5.6",
+      "d": "M",
+      "q": "LIST - Cybersecurity weaknesses identified in exams:",
+      "items": [
+        "Vague policies",
+        "Policies not enforced",
+        "Inadequate system maintenance or outdated systems"
+      ],
+      "wrong": [
+        "Too much patching",
+        "Excessive documentation",
+        "Too many risk assessments"
+      ],
+      "why": "Policies must be specific, practiced, and supported by current systems."
+    },
+    {
+      "lo": "4.5.7",
+      "d": "M",
+      "q": "Best-practice risk-manager structure:",
+      "a": "CIO strictly as risk manager with no portfolio-manager duties, separated to reduce conflicts",
+      "w": [
+        "Portfolio manager self-polices all risk",
+        "No risk manager is needed",
+        "CEO always trades every position"
+      ],
+      "why": "The goal is authority, independence, and priority for risk management."
+    },
+    {
+      "lo": "4.5.7",
+      "d": "M",
+      "q": "The investment process is primarily a risk process because:",
+      "a": "Each gate identifies, measures, approves, or rejects risk before capital is deployed",
+      "w": [
+        "Risk appears only after investment",
+        "Due diligence is optional",
+        "Board approval eliminates all risk"
+      ],
+      "why": "Idea generation, due diligence, committee approval and board approval are risk-control gates."
+    }
+  ]
+};
+for (const [v, arr] of Object.entries(SUPP_BANKS_V29)) {
+  if (!BANKS[v]) BANKS[v] = [];
+  const existing = new Set(BANKS[v].map(x => String(x.q || '')));
+  arr.forEach(x => { if (!existing.has(String(x.q || ''))) { BANKS[v].push(x); existing.add(String(x.q || '')); } });
+}
+
 const REWARD = {E:5, M:10, H:15}, PENALTY = 20, BOUNTY = 20;
 const QTIME = {E:45, M:60, H:72};           /* exam clock: seconds by difficulty, max 72 s */
 const RATION_FREE = 12;                      /* full rewards for first N questions per day */
@@ -3244,14 +5750,61 @@ function openDialog(who, lines){
 
 /* ===== v15: automatic keyword bolding ===== */
 const BOLD_ACRO=/\b(LPDI|EPC-HHPLC|IDMRP|FLTC|ICDRA|MABNC|IPS|MVO|VaR|CaR|KS-PME|LN-PME|PME|TPA|SAA|TAA|CPPI|OBPI|SWFs?|CTAs?|REITs?|NPI|NAREIT|NOI|LDI|ABO|PBO|DB|DC|GP|LP|CIO|COO|CFO|CRO|SEC|NIS|MLM|GSCI|AUM|IRR)\b/g;
-const BOLD_WORDS=/\b(fiduciary duty|fiduciary|loyalty|prudence|diversification return|diversification|impartiality|conflicts? of interest|client-first|professionalism|assurance|cap rate spread|cap rates?|roll return|roll method|backwardation|contango|total return|excess return|peer groups?|quartiles?|vintage|true alpha|manufactured alpha|transitional alpha|alternative beta|alpha|beta|smoothing|unsmoothing|autocorrelation|initial margin|maintenance margin|margin-to-equity|variation margin|cross-margin|trading level|funding level|notional funding|omega ratio|stop-loss|stress test|exception reports?|watch list|key person risk|risk parity|risk budgeting|risk aversion|risk premium|risk manager|rebalancing|endowments?|foundations?|pension funds?|family offices?|sovereign wealth funds?|co-investments?|co-investing|secondaries|continuation funds?|overcommitment|benchmarks?|benchmarking|Level [123] assets?|Level [123]|mean-variance|mean reversion|delta hedging|delta|put-call parity|utility|shrinkage|Black-Litterman|factor lens|reference portfolio|core-satellite|J-curve|buy-and-hold|constant mix|surplus risk|funded status|spending rates?|intergenerational equity|Dutch disease|Santiago Principles|liquidity risk|value at risk|confidence level|anchoring|checks and balances|hierarchy of alpha|Bailey criteria)\b/gi;
+const BOLD_WORDS=/\b(fiduciary duty|fiduciary|loyalty|prudence|diversification return|diversification|impartiality|conflicts? of interest|client-first|professionalism|assurance|cap rate spread|cap rates?|roll return|roll method|backwardation|contango|total return|excess return|peer groups?|quartiles?|vintage|true alpha|manufactured alpha|transitional alpha|alternative beta|alpha|beta|smoothing|unsmoothing|autocorrelation|initial margin|maintenance margin|margin-to-equity|variation margin|cross-margin|trading level|funding level|notional funding|omega ratio|stop-loss|stress test|exception reports?|watch list|key person risk|risk parity|risk budgeting|risk aversion|risk premium|risk manager|rebalancing|endowments?|foundations?|pension funds?|family offices?|sovereign wealth funds?|co-investments?|co-investing|secondaries|continuation funds?|overcommitment|benchmarks?|benchmarking|Level [123] assets?|Level [123]|mean-variance|mean reversion|delta hedging|delta|put-call parity|utility|shrinkage|Black-Litterman|factor lens|reference portfolio|core-satellite|J-curve|buy-and-hold|constant mix|surplus risk|funded status|spending rates?|intergenerational equity|Dutch disease|Santiago Principles|liquidity risk|value at risk|confidence level|anchoring|checks and balances|hierarchy of alpha|Bailey criteria|dimensions of risk|risk reporting|aggregation and systems development|frequency of data collection|investment or position level)\b/gi;
 function boldify(s){
   return String(s)
     .replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')
     .replace(BOLD_ACRO,'<b>$1</b>')
     .replace(BOLD_WORDS,'<b>$1</b>');
 }
-function showLine(){ dWho.textContent=state.dialogWho; dText.innerHTML=boldify(state.dialogQueue[0]); }
+function lineToHtml(line){
+  return boldify(String(line).trim());
+}
+function formatStudyText(raw){
+  const text=String(raw||'').replace(/<br\s*\/?>(\s*)/gi,'\n\n').replace(/\r\n/g,'\n').trim();
+  if(!text) return '';
+  return text.split(/\n{2,}/).map(formatBlock).join('');
+}
+function formatBlock(block){
+  let b=String(block).trim();
+  if(!b) return '';
+
+  const explicit=b.split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  if(explicit.length>1){
+    let lead=[];
+    let bullets=[];
+    explicit.forEach(line=>{
+      const m=line.match(/^(?:[-•*○]|\d+[.)])\s*(.+)$/);
+      if(m) bullets.push(m[1]); else lead.push(line);
+    });
+    if(bullets.length>=2 || (lead.length && bullets.length)){
+      return (lead.length?'<p class="lead">'+lineToHtml(lead.join(' '))+'</p>':'')+
+        '<ul>'+bullets.map(x=>'<li>'+lineToHtml(x)+'</li>').join('')+'</ul>';
+    }
+  }
+
+  if((b.match(/\s·\s/g)||[]).length>=1){
+    const parts=b.split(/\s·\s/).map(x=>x.trim()).filter(Boolean);
+    if(parts.length>=2){
+      let lead='';
+      let first=parts[0];
+      const cut=first.lastIndexOf(':');
+      if(cut>=0 && first.slice(cut+1).trim().length>0 && first.slice(0,cut).length<220){
+        lead=first.slice(0,cut+1).trim();
+        first=first.slice(cut+1).trim();
+      }
+      const items=[first].concat(parts.slice(1));
+      return (lead?'<p class="lead">'+lineToHtml(lead)+'</p>':'')+
+        '<ul>'+items.map(x=>'<li>'+lineToHtml(x)+'</li>').join('')+'</ul>';
+    }
+  }
+
+  if(/^[-+]?\d+(?:\.\d+)?\s*[=≈]/.test(b) || /(?:^|\s)(?:=|≈)\s*[-+]?\d/.test(b)){
+    return '<p><span class="formula">'+lineToHtml(b)+'</span></p>';
+  }
+  return '<p>'+lineToHtml(b)+'</p>';
+}
+function showLine(){ dWho.textContent=state.dialogWho; dText.innerHTML=formatStudyText(state.dialogQueue[0]); }
 function advanceDialog(){
   state.dialogQueue.shift();
   if(!state.dialogQueue.length){
@@ -3472,19 +6025,19 @@ function settle(good, timeout){
         gain+=BOUNTY; note+=' + 🎯 '+BOUNTY+' α recovered';
         state.bounty[v].delete(idx); state.bountyArmed[v].delete(idx);
       } else {
-        locked=`<br><br>🎯 ${BOUNTY} α still LOCKED — right answer, but you never re-read the teacher. ${recoveryHint(Q)}`;
+        locked=formatStudyText(`🎯 ${BOUNTY} α still LOCKED — right answer, but you never re-read the teacher.\n\n${recoveryHint(Q)}`);
       }
     }
     state.tokens+=gain;
     state.answered[v].add(idx); state.answeredAt[v][idx]=Date.now();
-    quizWhy.innerHTML=`✅ +${gain} α${note} — ${boldify(state.quizWhy)}${locked}`;
+    quizWhy.innerHTML=formatStudyText(`✅ +${gain} α${note} — ${state.quizWhy}`)+locked;
   }else{
     state.tokens=Math.max(0,state.tokens-PENALTY);
     state.bounty[v].add(idx); state.bountyArmed[v].delete(idx);
     state.missLog[v].add(idx);
     state.answered[v].delete(idx); delete state.answeredAt[v][idx];
     state.pendingGuide={v:v, idx:idx};
-    quizWhy.innerHTML=(timeout?`⏱ TIME UP — counted as wrong. `:'')+`❌ −${PENALTY} α — ${boldify(state.quizWhy)}<br><br>${boldify(recoveryHint(Q))}`;
+    quizWhy.innerHTML=formatStudyText((timeout?`⏱ TIME UP — counted as wrong. `:'')+`❌ −${PENALTY} α — ${state.quizWhy}\n\n${recoveryHint(Q)}`);
   }
   if(state.boss){
     if(!good) state.boss.lives--;
